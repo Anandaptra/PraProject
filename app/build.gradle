@@ -4,6 +4,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'kotlin-parcelize'
+//    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -33,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -56,5 +60,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.7'
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //navigation component
+    def nav_version = "2.4.1"
+    //noinspection GradleDependency
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    //noinspection GradleDependency
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 }
