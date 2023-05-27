@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.praproject.R
 import com.example.praproject.databinding.FragmentRegisterBinding
+import com.example.praproject.dataclass.User
 import com.example.praproject.viewmodel.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
-
+    private val regVM: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,18 +41,19 @@ class RegisterFragment : Fragment() {
             val name = binding.etNama.text.toString()
             val email = binding.etEmail.text.toString()
             val password = binding.etPw.text.toString()
-            val image = binding.etImage.text.toString()
-            addUser(name, email, password, image)
+            addUser(User(name, email, password))
         }
     }
 
-    fun addUser(name : String, email : String, password : String, image : String) {
-        val viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
-        viewModel.addDataUser(name, email, password, image )
-        viewModel.postUser().observe(this, {
-            if (it != null)
-                Toast.makeText(context, "Data berhasil ditambah", Toast.LENGTH_SHORT).show()
-        })
+    fun addUser(user: User) {
+        regVM.addDataUser(user)
+        regVM.postDataUser.observe(this){
+            if(it != null){
+                Toast.makeText(requireContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Registrasi Gagal", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 //    private fun registAccount() {

@@ -1,5 +1,6 @@
 package com.example.praproject.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.praproject.data.endpoint.DataUsersItem
@@ -10,33 +11,24 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterViewModel : ViewModel() {
+    private val _postDataUser = MutableLiveData<DataUsersItem>()
+    val postDataUser: LiveData<DataUsersItem> = _postDataUser
 
-    lateinit var postDataUser : MutableLiveData<DataUsersItem>
 
-    init {
-        postDataUser = MutableLiveData()
-    }
-
-    fun postUser () : MutableLiveData<DataUsersItem> {
-        return postDataUser
-    }
-
-    fun addDataUser(name : String, email : String, password : String, image : String) {
-        RetrofitClient.instance.postDataUser(User(name , email, password, image)).enqueue(object :
+    fun addDataUser(user: User) {
+        RetrofitClient.instance.postDataUser(user).enqueue(object :
             Callback<DataUsersItem> {
             override fun onResponse(
                 call: Call<DataUsersItem>,
                 response: Response<DataUsersItem>
             ) {
                 if (response.isSuccessful) {
-                    postDataUser.postValue(response.body())
-                } else {
-                    postDataUser.postValue(null)
+                    _postDataUser.postValue(response.body())
                 }
             }
 
             override fun onFailure(call: Call<DataUsersItem>, t: Throwable) {
-                postDataUser.postValue(null)
+                throw t
             }
         })
     }

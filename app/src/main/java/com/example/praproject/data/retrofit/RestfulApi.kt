@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface RestfulApi {
-    @GET("DataUser")
+    @GET("users")
     fun getAllUser(): Call<List<DataUsersItem>>
     @GET("DataTranshistory")
     fun getAllTranshistory(): Call<List<DataTranshistoryItem>>
@@ -30,7 +30,7 @@ interface RestfulApi {
     @GET("DataSliders")
     fun getAllSliders(): Call<List<DataSliderItem>>
 
-    @POST("DataUser")
+    @POST("users")
     fun postDataUser(@Body request : User) : Call<DataUsersItem>
     @POST("DataTranshistory")
     fun postDataTranshistory(@Body request : Transhistory) : Call<DataTranshistoryItem>
