@@ -54,7 +54,6 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(requireContext(), "Registrasi Gagal", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
 //    private fun registAccount() {
 //        val username = binding.etNama.text.toString()
