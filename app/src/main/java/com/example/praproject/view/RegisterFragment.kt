@@ -49,7 +49,10 @@ class RegisterFragment : Fragment() {
         viewModel.addDataUser(name, email, password, image )
         viewModel.postUser().observe(this, {
             if (it != null)
-                Toast.makeText(context, "Data berhasil ditambah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Registration Success", Toast.LENGTH_SHORT).show()
+            else {
+                Toast.makeText(context, "Regis Failed", Toast.LENGTH_SHORT).show()
+            }
         })
     }
 
