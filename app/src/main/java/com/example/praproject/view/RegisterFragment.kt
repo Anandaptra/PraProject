@@ -47,10 +47,10 @@ class RegisterFragment : Fragment() {
 
     fun addUser(user: User) {
         regVM.addDataUser(user)
-        regVM.postDataUser.observe(this){
-            if(it != null){
+        regVM.postDataUser.observe(this) {
+            if (it != null) {
                 Toast.makeText(requireContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(requireContext(), "Registrasi Gagal", Toast.LENGTH_SHORT).show()
             }
         }
@@ -75,4 +75,5 @@ class RegisterFragment : Fragment() {
 //    }
 
 
+    }
 }
