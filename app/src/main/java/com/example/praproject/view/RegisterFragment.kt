@@ -8,15 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.praproject.R
 import com.example.praproject.databinding.FragmentRegisterBinding
+import com.example.praproject.viewmodel.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 
 class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,28 +36,41 @@ class RegisterFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnRegis.setOnClickListener {
-            registAccount()
+            val name = binding.etNama.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPw.text.toString()
+            val image = binding.etImage.text.toString()
+            addUser(name, email, password, image)
         }
     }
 
-    private fun registAccount() {
-        val username = binding.etNama.text.toString()
-        val email = binding.etEmail.text.toString()
-        val password = binding.etPw.text.toString()
-
-
-        if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Toast.makeText(context, "Registration Success", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                } else {
-                    Toast.makeText(context, "Registration Failed", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
+    fun addUser(name : String, email : String, password : String, image : String) {
+        val viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        viewModel.addDataUser(name, email, password, image )
+        viewModel.postUser().observe(this, {
+            if (it != null)
+                Toast.makeText(context, "Data berhasil ditambah", Toast.LENGTH_SHORT).show()
+        })
     }
+
+//    private fun registAccount() {
+//        val username = binding.etNama.text.toString()
+//        val email = binding.etEmail.text.toString()
+//        val password = binding.etPw.text.toString()
+//
+//
+//        if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+//            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+//                if (it.isSuccessful) {
+//                    Toast.makeText(context, "Registration Success", Toast.LENGTH_SHORT).show()
+//                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+//                } else {
+//                    Toast.makeText(context, "Registration Failed", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+//
+//    }
 
 
 }
