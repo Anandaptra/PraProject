@@ -47,6 +47,7 @@ class LoginFragment : Fragment() {
             }else{
                 loginResponse(email, password)
             }
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
     }
 

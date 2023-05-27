@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardMaxElevation="5dp"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="20dp"
+    android:id="@+id/detailNews"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="TODO"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/etJudul"
+            android:layout_toEndOf="@+id/imgView"
+            android:layout_marginStart="10dp"
+            android:text="Judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/etTanggal"
+            android:layout_below="@id/etJudul"
+            android:layout_toEndOf="@+id/imgView"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Tanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
