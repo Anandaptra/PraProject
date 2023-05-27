@@ -15,7 +15,7 @@ class NewsUpdateViewModel : ViewModel() {
         liveDataNewsUpdate = MutableLiveData()
     }
 
-    fun callApiNews() {
+    fun getUpdate() {
         RetrofitClient.instance.getAllNewsUpdate().enqueue(object : Callback<List<DataNewsUpdateItem>> {
             override fun onResponse(
                 call: Call<List<DataNewsUpdateItem>>,

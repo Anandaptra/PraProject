@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         super.onStart()
 
         val viewModelNews = ViewModelProvider(this).get(NewsUpdateViewModel::class.java)
-        viewModelNews.callApiNews()
+        viewModelNews.getUpdate()
         viewModelNews.liveDataNewsUpdate.observe(viewLifecycleOwner, Observer { newsupdateList ->
             if (newsupdateList != null) {
                 val newsAdapter = NewsUpdateAdapter(newsupdateList)
@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
         })
 
         val viewModelProduct = ViewModelProvider(this).get(ProductViewModel::class.java)
-        viewModelProduct.callApiNews()
+        viewModelProduct.getProduct()
         viewModelProduct.liveProduct.observe(viewLifecycleOwner, Observer { productList ->
             if (productList != null) {
                 val productsAdapter = ProductAdapter(productList)

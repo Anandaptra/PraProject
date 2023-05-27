@@ -16,7 +16,7 @@ class ProductViewModel : ViewModel() {
         liveProduct = MutableLiveData()
     }
 
-    fun callApiNews() {
+    fun getProduct() {
         RetrofitClient.instance.getAllProducts().enqueue(object : Callback<List<DataProductsItem>> {
             override fun onResponse(
                 call: Call<List<DataProductsItem>>,
