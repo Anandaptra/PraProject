@@ -16,14 +16,15 @@ class NewsUpdateViewModel : ViewModel() {
     }
 
     fun getUpdate() {
-        RetrofitClient.instance.getAllNewsUpdate().enqueue(object : Callback<List<DataNewsUpdateItem>> {
+        RetrofitClient.instance.getAllNewsUpdate().enqueue(object : retrofit2.Callback<List<DataNewsUpdateItem>>{
             override fun onResponse(
                 call: Call<List<DataNewsUpdateItem>>,
                 response: Response<List<DataNewsUpdateItem>>
             ) {
                 if (response.isSuccessful) {
                     liveDataNewsUpdate.postValue(response.body())
-                } else {
+
+                }else {
                     liveDataNewsUpdate.postValue(null)
                 }
             }
@@ -31,6 +32,7 @@ class NewsUpdateViewModel : ViewModel() {
             override fun onFailure(call: Call<List<DataNewsUpdateItem>>, t: Throwable) {
                 liveDataNewsUpdate.postValue(null)
             }
+
         })
     }
 }

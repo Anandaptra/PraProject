@@ -19,12 +19,12 @@ interface RestfulApi {
     fun getAllCart(): Call<List<DataCartItem>>
     @GET("DataFavourite")
     fun getAllFavourite(): Call<List<DataFavouriteItem>>
-    @GET("DataNewsUpdate")
+    @GET("news_update")
     fun getAllNewsUpdate(): Call<List<DataNewsUpdateItem>>
     @GET("DataCategory")
     fun getAllCategory(): Call<List<DataCategoryItem>>
 
-    @GET("DataProducts")
+    @GET("category_product/5/products")
     fun getAllProducts(): Call<List<DataProductsItem>>
 
     @GET("DataSliders")

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".view.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/imageSliders"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -35,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="News_Update"
+            android:text="Category Update"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/dotIndi"
             app:layout_constraintStart_toStartOf="parent" />
@@ -44,6 +46,7 @@
             android:id="@+id/rvNewsUpdate"
             android:layout_width="match_parent"
             android:layout_height="235dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/tvNewsUpdate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -53,13 +56,14 @@
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginTop="7dp"
-            android:text="List_Products"
+            android:text="Products"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rvNewsUpdate" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@+id/tvProducts"

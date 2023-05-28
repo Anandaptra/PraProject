@@ -39,22 +39,23 @@ class HomeFragment : Fragment() {
 
         val slidersLayout = binding.imageSliders
         slidersLayout.setImageList(imgSLiders)
+
+        showDataNewsUpdate()
+        showDataProduct()
     }
 
-    override fun onStart() {
-        super.onStart()
-
+    fun showDataNewsUpdate() {
         val viewModelNews = ViewModelProvider(this).get(NewsUpdateViewModel::class.java)
         viewModelNews.getUpdate()
-        viewModelNews.liveDataNewsUpdate.observe(viewLifecycleOwner, Observer { newsupdateList ->
-            if (newsupdateList != null) {
-                val newsAdapter = NewsUpdateAdapter(newsupdateList)
-                binding.rvNewsUpdate.layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                binding.rvNewsUpdate.adapter = newsAdapter
+        viewModelNews.liveDataNewsUpdate.observe(this, Observer {
+            if (it != null) {
+                binding.rvNewsUpdate.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                binding.rvNewsUpdate.adapter = NewsUpdateAdapter(it)
             }
         })
+    }
 
+    fun showDataProduct() {
         val viewModelProduct = ViewModelProvider(this).get(ProductViewModel::class.java)
         viewModelProduct.getProduct()
         viewModelProduct.liveProduct.observe(viewLifecycleOwner, Observer { productList ->
@@ -66,4 +67,5 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
 }
