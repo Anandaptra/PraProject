@@ -32,7 +32,7 @@ class SplashFragment : Fragment() {
     }
 
     fun navigateToHome(){
-        findNavController().navigate(R.id.action_splashFragment_to_loginFragment2)
+        findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
     }
 
 
