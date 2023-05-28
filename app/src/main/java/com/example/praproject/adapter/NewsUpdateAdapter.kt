@@ -12,8 +12,7 @@ class NewsUpdateAdapter(private val listNews: List<DataNewsUpdateItem>) : Recycl
         fun bind(newsItem: DataNewsUpdateItem) {
             binding.etJudul.text = newsItem.title
             binding.etTanggal.text = newsItem.createdAt
-            Glide.with(binding.root)
-                .load(newsItem.newsImage).into(binding.imgView)
+            Glide.with(binding.root).load(newsItem.newsImage).into(binding.imgView)
         }
     }
 

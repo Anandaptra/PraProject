@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ProductViewModel : ViewModel() {
-    var liveProduct: MutableLiveData<List<DataProductsItem>> = MutableLiveData()
+    var liveProduct: MutableLiveData<List<DataProductsItem>?> = MutableLiveData()
 
     init {
         liveProduct = MutableLiveData()
