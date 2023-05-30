@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         viewModelNews.getUpdate()
         viewModelNews.liveDataNewsUpdate.observe(this, Observer {
             if (it != null) {
-                binding.rvNewsUpdate.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                binding.rvNewsUpdate.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 binding.rvNewsUpdate.adapter = NewsUpdateAdapter(it)
             }
         })
