@@ -9,6 +9,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface RestfulApi {
     @GET("users")
@@ -36,8 +37,6 @@ interface RestfulApi {
     fun postDataTranshistory(@Body request : Transhistory) : Call<DataTranshistoryItem>
     @POST("DataCart")
     fun postDataCart(@Body request : Cart) : Call<DataCartItem>
-    @POST("DataFavourite")
-    fun postDataUser(@Body request : Favourite) : Call<DataFavouriteItem>
-
-
+    @GET("users/{id_users}/favourite")
+    fun getFavouriteItem(@Path("id_users") id_users: Int) : Call<List<DataFavouriteItem>>
 }
