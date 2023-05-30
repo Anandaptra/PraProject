@@ -39,4 +39,10 @@ interface RestfulApi {
     fun postDataCart(@Body request : Cart) : Call<DataCartItem>
     @GET("users/{id_users}/favourite")
     fun getFavouriteItem(@Path("id_users") id_users: Int) : Call<List<DataFavouriteItem>>
+
+    @POST("users/{id_users}/favourite")
+    fun postFavItem(@Path("id_users") id_users: Int, @Body fav: Favourite) : Call<DataFavouriteItem>
+
+    @POST("users/{id_users}/cart")
+    fun postCartItem(@Path("id_users") id_users: Int, @Body cart: Cart) : Call<DataCartItem>
 }
