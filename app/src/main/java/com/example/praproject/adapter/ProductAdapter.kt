@@ -19,6 +19,20 @@ class ProductAdapter(private val listProducts: List<DataProductsItem>) : Recycle
             Glide.with(binding.root)
                 .load(productItem.productImage).into(binding.imgView)
 
+            binding.detailList.setOnClickListener {
+                val id = productItem.idProduct
+                val imagepath = productItem.productImage
+                val title = productItem.name
+                val price = productItem.price.toString()
+                val overview = productItem.description
+                val date = productItem.createdAt
+
+                val detail = Detail(id, imagepath, title, price, overview, date)
+
+                val data = Bundle()
+                data.putParcelable("product", detail)
+                Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_detailFragment, data)
+            }
         }
     }
 
