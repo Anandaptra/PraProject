@@ -30,21 +30,19 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // pengambilan data
         val list = arguments?.getParcelable<Detail>("product") as Detail
 
-        val id = list.id
         val imagepath = list.imagePath
         val title = list.title
         val price = list.price
         val overview = list.overview
         val date = list.Date
 
-        binding.tvTitle.text = title
-        binding.tvPrice.text = price
-        binding.tvDeesc.text = overview
-        binding.tvDate.text = date
-        Glide.with(binding.root).load(imagepath).into(binding.imagepath)
+        binding.etTitle.text = title
+        binding.etPrice.text = price
+        binding.etDesc.text = overview
+        binding.etDate.text = date
+        Glide.with(binding.root).load(imagepath).into(binding.imgProduct)
 
         binding.addFav.setOnClickListener{
             postFav(Favourite(title, imagepath, price))

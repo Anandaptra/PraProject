@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.praproject.databinding.ActivityMainBinding
+import com.example.praproject.view.CartFragment
 import com.example.praproject.view.FavouriteFragment
+import com.example.praproject.view.HistoryFragment
 import com.example.praproject.view.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -29,8 +31,12 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(FavouriteFragment())
                     true
                 }
+                R.id.cart -> {
+                    loadFragment(CartFragment())
+                    true
+                }
                 R.id.transHistory -> {
-                    loadFragment(HomeFragment())
+                    loadFragment(HistoryFragment())
                     true
                 }
                 R.id.profile -> {

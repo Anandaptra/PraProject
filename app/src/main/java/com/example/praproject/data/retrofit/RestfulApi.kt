@@ -14,10 +14,7 @@ import retrofit2.http.Path
 interface RestfulApi {
     @GET("users")
     fun getAllUser(): Call<List<DataUsersItem>>
-    @GET("DataTranshistory")
-    fun getAllTranshistory(): Call<List<DataTranshistoryItem>>
-    @GET("DataCart")
-    fun getAllCart(): Call<List<DataCartItem>>
+
     @GET("DataFavourite")
     fun getAllFavourite(): Call<List<DataFavouriteItem>>
     @GET("news_update")
@@ -35,14 +32,18 @@ interface RestfulApi {
     fun postDataUser(@Body request : User) : Call<DataUsersItem>
     @POST("DataTranshistory")
     fun postDataTranshistory(@Body request : Transhistory) : Call<DataTranshistoryItem>
-    @POST("DataCart")
-    fun postDataCart(@Body request : Cart) : Call<DataCartItem>
+
     @GET("users/{id_users}/favourite")
     fun getFavouriteItem(@Path("id_users") id_users: Int) : Call<List<DataFavouriteItem>>
 
     @POST("users/{id_users}/favourite")
     fun postFavItem(@Path("id_users") id_users: Int, @Body fav: Favourite) : Call<DataFavouriteItem>
 
+    @GET("users/{id_users}/cart")
+    fun getCartItem(@Path("id_users") id_users: Int) : Call<List<DataCartItem>>
     @POST("users/{id_users}/cart")
     fun postCartItem(@Path("id_users") id_users: Int, @Body cart: Cart) : Call<DataCartItem>
+
+    @GET("users/{id_users}/transhistory")
+    fun geTranshistory(@Path("id_users") id_users: Int) : Call<List<DataTranshistoryItem>>
 }

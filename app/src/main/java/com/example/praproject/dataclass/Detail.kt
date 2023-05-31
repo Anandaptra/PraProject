@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Detail(
-    val id: String,
     val imagePath:String,
     val title:String,
     val price:String,

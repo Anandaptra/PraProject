@@ -8,39 +8,41 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.praproject.R
-import com.example.praproject.adapter.CartAdapter
 import com.example.praproject.adapter.FavouriteAdapter
-import com.example.praproject.databinding.FragmentCartBinding
+import com.example.praproject.adapter.HistoryAdapter
+import com.example.praproject.databinding.FragmentHistoryBinding
 import com.example.praproject.viewmodel.CartViewModel
-import com.example.praproject.viewmodel.FavouriteViewModel
+import com.example.praproject.viewmodel.HistoryViewModel
 
-class CartFragment : Fragment() {
-    lateinit var binding: FragmentCartBinding
-    private val cartVm: CartViewModel by viewModels()
+class HistoryFragment : Fragment() {
+    lateinit var binding: FragmentHistoryBinding
+    private val historyvm: HistoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCartBinding.inflate(layoutInflater, container, false)
         // Inflate the layout for this fragment
+        binding = FragmentHistoryBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showCart()
+        showHistory()
     }
 
-    fun showCart(){
-        cartVm.getCart()
-        cartVm.cart.observe(this){
+    fun showHistory(){
+        historyvm.getHistory()
+        historyvm.history.observe(this){
             if(it != null){
                 binding.apply {
-                    rvCart.adapter = CartAdapter(it)
-                    rvCart.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    rvHistory.adapter = HistoryAdapter(it)
+                    rvHistory.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 }
             }
         }
     }
+
+
 }
